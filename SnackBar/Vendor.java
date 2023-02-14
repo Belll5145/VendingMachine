@@ -14,7 +14,8 @@ public class Vendor
     private int stock;
     private int deposit;
     private int change;
-    //make a private static double variable called totalSales that has an initial value of 0
+    private static double totalSales = 0.0;
+
 
 
     /**
@@ -44,7 +45,7 @@ public class Vendor
      */
     public int getStock()
     {
-        //complete this
+        return stock;
     }
 
     /**
@@ -77,6 +78,10 @@ public class Vendor
      */
     public boolean makeSale()
     {
+        if(stock > 0 && deposit >= price){
+            stock--;
+
+        }
         //create the makesale method
     }
 
@@ -106,13 +111,13 @@ public class Vendor
     }
     
     /**
-    * Returns the total number of sales and resets the total number of sales to 0
+    * Returns the total dollars of sales and resets the total dollars of sales to 0
     * Hint: use a temp variable
     *
     * @return number of sales
     */
     public static double getTotalSales()
     {
-        //complete this
+        return totalSales;
     }
 }
