@@ -25,18 +25,19 @@ public class Vendor
      */
     public Vendor(int price, int stock)
     {
-        //You need to complete this using this. notation
+        this.price = price;
+        this.stock = stock;
     }
 
     /**
      * Sets the quantity of items in stock.
-     * @param qty number of items to place in stock (int)
+     * @param stock number of items to place in stock (int)
      */
 
 
     public void setStock(int stock)
     {
-        //You need to complete this using this. notation
+        this.stock = stock;
     }
 
     /**
@@ -51,11 +52,11 @@ public class Vendor
     /**
      * Adds a specified amount (in cents) to the
      * deposited amount.
-     * @param number of cents to add to the deposit (int)
+     * @param d of cents to add to the deposit (int)
      */
     public void addMoney(int d)
     {
-        //You need to complete this using mutator
+        deposit += d;
     }
 
     /**
@@ -80,9 +81,16 @@ public class Vendor
     {
         if(stock > 0 && deposit >= price){
             stock--;
+            change = deposit - price;
+            deposit -= price;
+
+            return true;
 
         }
-        //create the makesale method
+        else{
+            return false;
+        }
+
     }
 
     /**
@@ -97,15 +105,21 @@ public class Vendor
         return c;
     }
 
+    /**
+     *
+     * @return the amount and type of coins that should be returned by the machine
+     */
+
     public String getChangeString()
     {
-        //From Ethan: create a get method that returns the amount and type of coins that should be returned by the machine
-        /*
-        note that the coin class has a .getQuarters(), a .getDimes() etc etc (use the coin class!)
-        */
-        
+        Coins coinChange = new Coins(change);
+        int quarters = coinChange.getQuarters();
+        int dimes = coinChange.getDimes();
+        int nickels = coinChange.getNickles();
+        int pennies = coinChange.getPennies();
 
-        String changeString="";
+
+        String changeString= quarters +"q "+ dimes +"d "+ nickels +"n "+ pennies +"p";
 
         return changeString;
     }
